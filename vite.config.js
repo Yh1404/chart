@@ -19,13 +19,13 @@ export default defineConfig({
 		// 	gzipSize: true
 		// }),
 	],
+	base: '/chart',
 	server: {
 		port: 1217,
 		host: "0.0.0.0",
 		open: true,
 	},
 	build: {
-		assetsDir: '/chart',
 		reportCompressedSize: false,
 		rollupOptions: {
 			output: {
