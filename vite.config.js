@@ -1,29 +1,39 @@
 import { fileURLToPath, URL } from "node:url"
-
+import { visualizer } from "rollup-plugin-visualizer"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
+import { splitVendorChunkPlugin } from "vite"
+import viteCompression from "vite-plugin-compression"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [vue()],
-	base: "/chart",
+	plugins: [
+		vue(),
+		splitVendorChunkPlugin(),
+		viteCompression({
+			deleteOriginFile: true,
+		}),
+		// visualizer({
+		// 	filename: "report.html",
+		// 	open: true,
+		// 	gzipSize: true
+		// }),
+	],
 	server: {
 		port: 1217,
 		host: "0.0.0.0",
 		open: true,
 	},
 	build: {
-		target: "esnext",
 		reportCompressedSize: false,
 		rollupOptions: {
 			output: {
+				format: "esm",
 				paths: {
-					vue: "https://unpkg.com/vue@3/dist/vue.global.js",
-					echarts: "https://unpkg.com/echarts@5.4.2/dist/echarts.min.js",
-					"lodash/cloneDeep": "https://unpkg.com/lodash@4.17.21/cloneDeep.js",
+					echarts: "https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.esm.min.js",
 				},
 			},
-			external: ["vue", "echarts", "lodash/cloneDeep"],
+			external: ["echarts"],
 		},
 	},
 	resolve: {

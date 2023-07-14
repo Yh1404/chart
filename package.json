@@ -18,8 +18,10 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
     "@types/big.js": "^6.1.6",
-    "vite": "^4.3.9"
+    "@vitejs/plugin-vue": "^4.2.3",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "vite": "^4.3.9",
+    "vite-plugin-compression": "^0.5.1"
   }
 }
