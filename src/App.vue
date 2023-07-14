@@ -141,7 +141,7 @@ function getPieOptions(val) {
 			top: state.options.pieTop + "%",
 			left: state.options.pieLeft + "%",
 			label: {
-				formatter: "{b} {c}kg \n {d}%",
+				formatter: "{b} {c} \n {d}%",
 			},
 		},
 	]

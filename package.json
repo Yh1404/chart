@@ -9,18 +9,17 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
-    "@types/big.js": "^6.1.6",
     "ant-design-vue": "^3.2.20",
     "big.js": "^6.2.1",
     "echarts": "^5.4.2",
     "lodash": "^4.17.21",
     "sass": "^1.63.4",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.2",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "@types/big.js": "^6.1.6",
     "vite": "^4.3.9"
   }
 }
