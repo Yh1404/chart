@@ -13,14 +13,14 @@ export default defineConfig({
 		open: true,
 	},
 	build: {
-		target: 'esnext',
+		target: "esnext",
 		reportCompressedSize: false,
 		rollupOptions: {
 			output: {
 				paths: {
 					vue: "https://unpkg.com/vue@3/dist/vue.global.js",
-					echarts: "https://unpkg.com/browse/echarts@5.4.2/dist/echarts.min.js",
-					"lodash/cloneDeep": "https://unpkg.com/browse/lodash@4.17.21/cloneDeep.js",
+					echarts: "https://unpkg.com/echarts@5.4.2/dist/echarts.min.js",
+					"lodash/cloneDeep": "https://unpkg.com/lodash@4.17.21/cloneDeep.js",
 				},
 			},
 			external: ["vue", "echarts", "lodash/cloneDeep"],
