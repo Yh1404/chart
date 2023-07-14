@@ -25,6 +25,7 @@ export default defineConfig({
 		open: true,
 	},
 	build: {
+		assetsDir: '/chart',
 		reportCompressedSize: false,
 		rollupOptions: {
 			output: {
