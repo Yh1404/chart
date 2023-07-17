@@ -31,7 +31,7 @@ echo 'complete build'
 echo 'restarting...'
 nginx -s reload
 echo 'finshed'
-echo 'deployed chart application at $time' >> 'deploy.log'
+echo 'deployed chart application at '$time'' >> 'deploy.log'
 
 
 
