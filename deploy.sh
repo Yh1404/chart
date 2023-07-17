@@ -1,5 +1,7 @@
 #!/bin/bash --login
 
+source ~/.bashrc
+
 echo 'start...'
 
 # check node verison
