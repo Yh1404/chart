@@ -404,7 +404,6 @@ onUnmounted(() => {
 			<a-space class="mt15">
 				<a-button @click="importMonthlyCustomerWeight" type="primary">导入月度客户购买重量数据</a-button>
 				<a-button type="primary" @click="importMonthlySaleCate">导入月度销售品种数据</a-button>
-				<a-button type="primary">导入月度销售额数据</a-button>
 				<a-popover title="选择客户" trigger="click" transitionName="">
 					<template #content>
 						<div

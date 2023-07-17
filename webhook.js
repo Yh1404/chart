@@ -16,7 +16,6 @@ var server = http.createServer(function (request, response) {
 			.on("end", () => {
 				body = Buffer.concat(body).toString()
 				const signature = crypto.createHmac("sha256", WEBHOOK_SECRET).update(body).digest("hex")
-				console.log(signature, request.headers["x-hub-signature-256"], "result")
 				if (request.headers["x-hub-signature-256"] === `sha256=${signature}`) {
 					exec("sh /home/yanghao/chart/deploy.sh")
 					response.writeHead(200)
