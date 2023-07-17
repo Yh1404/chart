@@ -1,13 +1,12 @@
 const http = require("http")
 const crypto = require("crypto")
-const { exec } = require("child_process")
+const { spawn } = require("child_process")
 const WEBHOOK_SECRET = "jdaug@*NLDAKJ@ldja)nea!l.apda!Q"
 var server = http.createServer(function (request, response) {
 	// 回调函数接收request和response对象,
 	// 获得HTTP请求的method和url:
 
 	if (request.url === "/chart/autodeploy" && request.method === "POST") {
-		console.log(new Date())
 		let body = []
 		request
 			.on("data", chunk => {
@@ -17,9 +16,14 @@ var server = http.createServer(function (request, response) {
 				body = Buffer.concat(body).toString()
 				const signature = crypto.createHmac("sha256", WEBHOOK_SECRET).update(body).digest("hex")
 				if (request.headers["x-hub-signature-256"] === `sha256=${signature}`) {
-					exec("sh /home/yanghao/chart/deploy.sh")
-					response.writeHead(200)
-					response.end("success")
+					let cmd = spawn("sh", ["/home/yanghao/chart/deploy.sh"])
+					cmd.on("data", data => {
+						console.log(`sh: ${data}`)
+					})
+					cmd.on("close", () => {
+						response.writeHead(200)
+						response.end("success")
+					})
 				} else {
 					response.writeHead(401)
 					response.end("Unauthorized")
