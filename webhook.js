@@ -6,7 +6,7 @@ var server = http.createServer(function (request, response) {
 	// 回调函数接收request和response对象,
 	// 获得HTTP请求的method和url:
 
-	if (request.url === "/chart/autodeploy" && request.method === "GET") {
+	if (request.url === "/chart/autodeploy" && request.method === "POST") {
 		let body = []
 		request
 			.on("data", chunk => {
