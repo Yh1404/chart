@@ -20,10 +20,9 @@ var server = http.createServer(function (request, response) {
 					cmd.on("data", data => {
 						console.log(`sh: ${data}`)
 					})
-					cmd.on("close", () => {
-						response.writeHead(200)
-						response.end("success")
-					})
+					// github的webhook只有10s的timeout时间，所以这里直接返回结果，不等脚本跑完
+					response.writeHead(200)
+					response.end("success")
 				} else {
 					response.writeHead(401)
 					response.end("Unauthorized")
