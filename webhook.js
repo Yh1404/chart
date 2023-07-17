@@ -1,5 +1,6 @@
 const http = require("http")
 const crypto = require("crypto")
+const { exec } = require("child_process")
 const WEBHOOK_SECRET = "jdaug@*NLDAKJ@ldja)nea!l.apda!Q"
 var server = http.createServer(function (request, response) {
 	// 回调函数接收request和response对象,
@@ -17,8 +18,15 @@ var server = http.createServer(function (request, response) {
 				const signature = crypto.createHmac("sha256", WEBHOOK_SECRET).update(body).digest("hex")
 				console.log(signature, request.headers["x-hub-signature-256"], "result")
 				if (request.headers["x-hub-signature-256"] === `sha256=${signature}`) {
-					response.writeHead(200)
-					response.end("success")
+					exec("sh /home/yanghao/chart/deploy.sh", (err, stdout, stderr) => {
+						if (err) {
+							response.writeHead(500)
+							response.end("更新出错")
+						}
+
+						response.writeHead(200)
+						response.end("success")
+					})
 				} else {
 					response.writeHead(401)
 					response.end("Unauthorized")

@@ -2,7 +2,7 @@
 
 source ~/.bashrc
 time=$(date +%Y-%m-%d" "%H:%M:%S)
-
+cd /home/yanghao/chart
 
 echo 'start...'
 # check node verison
