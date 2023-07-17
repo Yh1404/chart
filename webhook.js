@@ -15,16 +15,16 @@ var server = http.createServer(function (request, response) {
 			.on("end", () => {
 				body = Buffer.concat(body).toString()
 				// at this point, `body` has the entire request body stored in it as a string
+				const signature = crypto.createHmac("sha256", WEBHOOK_SECRET).update(JSON.stringify(body)).digest("hex")
+				if (request.headers["x-hub-signature-256"] === `sha256=${signature}`) {
+					console.log("success")
+					response.writeHead(200)
+					response.end("success")
+				} else {
+					response.writeHead(401)
+					response.end("Unauthorized")
+				}
 			})
-		const signature = crypto.createHmac("sha256", WEBHOOK_SECRET).update(JSON.stringify(body)).digest("hex")
-		if (request.headers["x-hub-signature-256"] === `sha256=${signature}`) {
-			console.log("success")
-			response.writeHead(200)
-			response.end("success")
-		} else {
-			response.writeHead(401)
-			response.end("Unauthorized")
-		}
 	} else {
 		response.writeHead(404)
 		response.end("Not Found")
