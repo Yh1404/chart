@@ -15,8 +15,9 @@ var server = http.createServer(function (request, response) {
 			.on("end", () => {
 				body = Buffer.concat(body).toString()
 				// at this point, `body` has the entire request body stored in it as a string
-                console.log(body, '\n________________' + request.headers["x-hub-signature-256"]);
+                // console.log(body, '\n________________' + request.headers["x-hub-signature-256"]);
 				const signature = crypto.createHmac("sha256", WEBHOOK_SECRET).update(JSON.stringify(body)).digest("hex")
+                console.log(signature, request.headers["x-hub-signature-256"], 'result');
 				if (request.headers["x-hub-signature-256"] === `sha256=${signature}`) {
 					response.writeHead(200)
                     response.end("success")
