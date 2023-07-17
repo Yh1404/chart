@@ -1,3 +1,5 @@
+#!/bin/bash --login
+
 echo 'start...'
 
 # check node verison
@@ -13,19 +15,19 @@ git pull
 echo 'complete fetch code'
 
 # install deps
-echo 'installing deps'
+echo 'installing deps...'
 yarn install
 echo 'complete install deps'
 
 # build
-echo 'building'
+echo 'building...'
 yarn build
 echo 'complete build'
 
 # restart
-echo 'restarting'
+echo 'restarting...'
 nginx -s reload
-echo 'finsh'
+echo 'finshed'
 
 
 
