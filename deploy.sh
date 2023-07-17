@@ -1,7 +1,7 @@
 #!/bin/bash --login
 
 source ~/.bashrc
-time = $(date +%Y-%m-%d" "%H:%M:%S)
+time=$(date +%Y-%m-%d" "%H:%M:%S)
 
 
 echo 'start...'
@@ -31,7 +31,7 @@ echo 'complete build'
 echo 'restarting...'
 nginx -s reload
 echo 'finshed'
-echo 'deployed chart application at '$time'' >> 'deploy.log'
+echo 'deployed chart application at '$time'\n' >> 'deploy.log'
 
 
 
