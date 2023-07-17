@@ -1,0 +1,32 @@
+echo 'start...'
+
+# check node verison
+echo 'checking node verison...'
+nvm use 19.9.0
+echo 'complete check node verison'
+
+sleep(2)
+
+# fetch code
+echo 'fetching code...'
+git pull
+echo 'complete fetch code'
+
+# install deps
+echo 'installing deps'
+yarn install
+echo 'complete install deps'
+
+# build
+echo 'building'
+yarn build
+echo 'complete build'
+
+# restart
+echo 'restarting'
+nginx -s reload
+echo 'finsh'
+
+
+
+
