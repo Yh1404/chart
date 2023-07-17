@@ -5,7 +5,7 @@ echo 'checking node verison...'
 nvm use 19.9.0
 echo 'complete check node verison'
 
-sleep(2)
+sleep 2s
 
 # fetch code
 echo 'fetching code...'
