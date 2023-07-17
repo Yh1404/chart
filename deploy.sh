@@ -1,9 +1,10 @@
 #!/bin/bash --login
 
 source ~/.bashrc
+time = $(date +%Y-%m-%d" "%H:%M:%S)
+
 
 echo 'start...'
-
 # check node verison
 echo 'checking node verison...'
 nvm use 19.9.0
@@ -30,6 +31,7 @@ echo 'complete build'
 echo 'restarting...'
 nginx -s reload
 echo 'finshed'
+echo 'deployed chart application at $time' >> 'deploy.log'
 
 
 
